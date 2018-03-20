@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition>
+        <h:form>
+            <p:menubar id="MenuGeneral" style="font-size: 15px;">
+                <p:submenu label="Inicio" icon="ui-icon-home" >
+                    <p:menuitem value="Inicio" icon="ui-icon-home" url="/Paginas/AltaUsuarios.xhtml" />
+                    <p:menuitem value="Cerrar Sesion" icon="ui-icon-pencil" actionListener="#{loginUsuario.cerrarSesion}" oncomplete="handleLoginRequest(xhr, status, args)"/>
+                </p:submenu>
+                <p:submenu label="Opciones" icon="ui-icon-key">
+                    <p:menuitem value="Cambiar Password" icon="ui-icon-key" url="/Paginas/cambiaPassword.xhtml" />
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+        <script type="text/javascript">
+            function handleLoginRequest(xhr, status, args) {
+                if (args.loggedOut) {
+                    location.href = args.rutaPagina;
+                }
+            }
+        </script>
+    </ui:composition>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>    
+        <title>Alta Usuarios</title>
+        <link rel="shortcut icon" href="/AltaADM/Imagenes/Ico.png" type="image/png"/>
+    </h:head>
+    
+    <ui:composition template="/Templates/Pagina.xhtml">
+        <ui:define name="menus">
+
+        </ui:define>
+        <ui:define name="content">
+            <h:form id="frmAltaUsuario" enctype="multipart/form-data">
+                <script type="text/javascript">
+                    function limpiarFomulario() {
+                        document.getElementById("frmAltaUsuario").reset();
+                    }
+                </script>
+                <p:messages id="msg" showDetail="true"  autoUpdate="true" closable="true"/>
+                <p:panel id="panelAltaUsuario" header="Solicitudes de Acceso a OyM" footer="Los campos marcados con asterisco (*) son de caracter obligatorio" style="font-weight: bold;">
+                    <h:panelGrid columns="2" cellpadding="2" style="margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: 5%">
+                        <h:outputLabel value="*Numero de empleado:" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:inputText id="numeroEmpleado" value="#{perfilUsuario.perfil.numeroEmpleado}" style="height: 15px; width: 110px;">
+                            <p:ajax listener="#{perfilUsuario.validaEmpleado}" update="correoEmpleado, opcionEmpleado" />
+                        </p:inputText>
+                        <h:outputLabel for="" value="*Correo electrónico:" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:inputText id="correoEmpleado" value="#{perfilUsuario.perfil.correoEmpleado}" disabled="#{perfilUsuario.datosOk}" style="height: 15px; width: 110px;">
+                        </p:inputText>
+                        <h:outputLabel value="*Sistema:" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:selectOneMenu id="opcionEmpleado" value="#{perfilUsuario.perfil.sistemaEmpleado}" style="height: 25px; width: 150px;">
+                            <f:selectItem itemLabel="OPCIONES" itemValue="noAplica"/>
+                            <f:selectItem itemLabel="REMEDY" itemValue="REMEDY"/>
+                            <f:selectItem itemLabel="ACCESO REMOTO VPN" itemValue="ACCESO REMOTO VPN"/>
+                            <p:ajax listener="#{perfilUsuario.validaSistema}" update="numeroEmpleado, correoEmpleado, opcionEmpleado, regionEmpleado,perfilEmpleado" />
+                        </p:selectOneMenu>
+                        <h:outputLabel value="*Región" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:selectOneMenu id="regionEmpleado" value="#{perfilUsuario.perfil.regionEmpleado}" style="height: 25px; width: 150px;">
+                            <f:selectItem itemLabel="OPCIONES" itemValue=""/>
+                            <f:selectItems value="#{perfilUsuario.listaRegiones}"/>
+                            <p:ajax listener="#{perfilUsuario.validaRegionPerfil}" update="perfilEmpleado"/>
+                        </p:selectOneMenu>
+                        <h:outputLabel value="*Perfil" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:selectOneMenu id="perfilEmpleado" value="#{perfilUsuario.perfil.perfilEmpleado}" style="height: 25px; width: 150px;">
+                            <f:selectItem itemLabel="OPCIONES" itemValue=""/>
+                            <f:selectItems value="#{perfilUsuario.listaOpciones}"/>
+                        </p:selectOneMenu>
+
+
+                        <h:outputLabel value="*Justificación" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:inputTextarea id="jutificacionEmpleado" cols="30" rows="5" value="#{perfilUsuario.perfil.justificacionEmpleado}" maxlength="155"/>
+
+
+                        <h:outputLabel for="archivoADM" value="*Archivo adjunto(.pdf)" style="font-weight: bold;"/>
+                        <p:fileUpload id="archivoADM" fileUploadListener="#{perfilUsuario.CargaArchivoADM}" cancelLabel="CANCELAR" label="BUSCAR" uploadLabel="ADJUNTAR" mode="advanced" dragDropSupport="false" update="msg" sizeLimit="5000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|PDF|pdf)$/" required="true"/>
+                        <p:message for="archivoADM" showDetail="true"/> 
+                        <f:facet name="footer">
+                            <h:panelGrid columns="6" cellspacing="6">
+                                <p:commandButton id="botonGenerar" value="Guardar" actionListener="#{perfilUsuario.generaRegistro}" update="frmAltaUsuario" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px">
+                                    <p:confirm header="Atención:" message="Desea generar el ADM." icon="ui-icon-info"/>
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="400" height="50">
+                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                                </p:confirmDialog>
+                                <p:commandButton id="botonLimpiar" value="Cancelar" actionListener="#{perfilUsuario.limpiaVariablesFrm}"  update="frmAltaUsuario" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px">
+                                    <p:confirm header="Atención" message="Se cancelara la solicitud ¿Desea continuar?" icon="ui-icon-info"/>
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="400" height="50">
+                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px"/>
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px"/>
+                                </p:confirmDialog>
+                                <p:commandButton id="botonCerrar" value="Salir " actionListener="#{loginUsuario.cerrarSesion}" update="numeroEmpleado, correoEmpleado, opcionEmpleado, perfilEmpleado" oncomplete="handleLoginRequest(xhr, status, args)" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px">
+                                    <p:confirm header="Atención:" message="Dese salir de la pagina" icon="ui-icon-info"/>
+                                </p:commandButton>
+                                <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" width="400" height="50">
+                                    <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px"/>
+                                    <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px"/>
+                                </p:confirmDialog>
+                            </h:panelGrid>
+                        </f:facet>
+                        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+                        <p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+                                  closable="false" resizable="false" showHeader="false">
+                            <p:graphicImage value="/Imagenes/ajax-loader.gif" />
+                        </p:dialog>
+                    </h:panelGrid>
+                </p:panel>
+            </h:form>
+            <script type="text/javascript">
+                function handleLoginRequest(xhr, status, args) {
+                    if (args.loggedOut) {
+                        location.href = args.rutaPagina;
+                    }
+                }
+            </script>
+        </ui:define>
+    </ui:composition>
+</html>

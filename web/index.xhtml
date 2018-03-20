@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+    <ui:composition template="/Templates/Pagina.xhtml">
+        <ui:define name="menus">
+
+        </ui:define>
+        <ui:define name="content">
+
+            <script type="text/javascript">
+                alert(" 1. Esta liga es para uso exclusivo de Jefe, Gerente, Subdirector que no cuentan con acceso al Sistema Remedy Cloud \n 2. Solo se puede solicitar por esta vía el alta a los Sistemas Remedy Cloud y Acceso Remoto VPN \n 3. A través de esta liga no se puede “renovar vigencia de cuentas” el procedimiento para este punto se describe en el manual de usuario del sistema ACCESOS TM");
+            </script>
+
+            <h:form id="loginUsuario">
+
+                <p:messages id="growl" showDetail="true" closable="true" autoUpdate="true" />
+
+                <p:panel id="panelLoginUsuario" header="Ingreso" footer="Los campos marcados con asterisco (*) son de caracter obligatorio">
+
+                    <h:outputLabel id="BANNER" value="ESTE SISTEMA ES SOLO PARA USUARIOS QUE NO TENGAN CUENTA EN REMEDY" style="text-align: center;color: red; font-weight: bold;"/>
+
+                    <h:panelGrid columns="2" cellpadding="2" style="margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: 5%">
+
+                        <h:outputLabel value="*Número de empleado : " style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                        <p:inputText id="usuario" value="#{loginUsuario.login.numeroEmpleado}" style="height: 15px; width: 100px;" required="false"/>
+
+                        <h:outputLabel value="*Usuario universal: " style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px" />
+                        <p:password id="contraseñaUsuario" value="#{loginUsuario.login.usuarioEmpleado}" style="height: 15px; width: 100px;" required="false"/>
+
+                        <f:facet name="footer">
+                            <p:commandButton id="validar" value="Ingresar" actionListener="#{loginUsuario.consultaUsuario}" oncomplete="handleLoginRequest(xhr, status, args)" icon="ui-icon-locked" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px"/>
+                            <p:commandButton value="Recuperar contraseña" type="button" onclick="PF('dlg2').show();" style="height:30px; text-align: center;font-weight: bold; font-size:13px;     margin-left: 20px "/>
+                        </f:facet>
+                        
+                        <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+                        <p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+                                  closable="false" resizable="false" showHeader="false">
+                            <p:graphicImage value="/Imagenes/ajax-loader.gif" />
+                        </p:dialog>
+
+                        <p:dialog id="modalRC" header="Recuperar contraseña" widgetVar="dlg2" modal="true" height="100" width="400" resizable="false" style="text-align: center">
+                            <h:outputLabel value="*Número de empleado : " style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
+                            <p:inputText id="recuperar" value="#{loginUsuario.login.vsNumEmpleado}" style="height: 15px; width: 100px; margin: 20px"/>
+                            <p:commandButton  id="recuperar2" value="Recuperar" actionListener="#{loginUsuario.fncEnviarCorreo}" oncomplete="PF('dlg2').hide();" icon="ui-icon-locked" style="height:30px; width:100px;text-align: center;font-weight: bold; font-size:13px"/>
+                        </p:dialog> 
+
+                    </h:panelGrid>
+                    <a href="/AltaADM/ArchivosADM/ManualAccesosTM_V2.pdf" target="blank" style="font-weight: bold; color: cornflowerblue;">¿Tienes alguna duda? Consulta el Manual de Usuario: ManualAccesosTM</a>
+
+                </p:panel>
+            </h:form>
+
+            <script type="text/javascript">
+                function handleLoginRequest(xhr, status, args) {
+                    if (args.validationFailed || !args.logueo) {
+                        jQuery('#loginUsuario').effect("shake", {
+                            times: 3
+                        }, 100);
+                    } else {
+                        location.href = args.rutaPagina;
+                    }
+                }
+            </script>
+
+        </ui:define>
+    </ui:composition>
+</html>
