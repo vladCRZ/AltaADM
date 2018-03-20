@@ -49,6 +49,9 @@ public class ControlPerfil {
     private UploadedFile archADM;
     public boolean datosOkNC;
     public boolean datosOk;
+    
+    public boolean archivo;
+    
     Properties prop;
 
     public DefaultStreamedContent imagen;
@@ -56,6 +59,7 @@ public class ControlPerfil {
     public ControlPerfil() {
 
         prop = PropertyLoader.load("altaadm.properties");
+        archivo = true;
     }
 
     public DefaultStreamedContent getImagen() {
@@ -138,6 +142,14 @@ public class ControlPerfil {
 
     public void setNombreArchivo(String nombreArchivo) {
         this.nombreArchivo = nombreArchivo;
+    }
+
+    public boolean isArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(boolean archivo) {
+        this.archivo = archivo;
     }
 
     /**
@@ -250,6 +262,7 @@ public class ControlPerfil {
                     msg.mensajeError("El usuario esta en REMEDY esta solicitud no aplica");
                     LimpiaVariables();
                 }
+                archivo = false;
                 break;
             case "ACCESO REMOTO VPN":
                 if (!perfilConsultas.valdiaADM(perfil.getNumeroEmpleado(), "ACCESO REMOTO VPN")) {
@@ -269,6 +282,7 @@ public class ControlPerfil {
                     msg.mensajeError("El usuario tiene un ADM en ejecucion");
                     LimpiaVariables();
                 }
+                archivo = true;
                 break;
             default:
                 datosOk = false;

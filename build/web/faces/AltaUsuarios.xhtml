@@ -56,7 +56,7 @@
 
 
                         <h:outputLabel for="archivoADM" value="*Archivo adjunto(.pdf)" style="font-weight: bold;"/>
-                        <p:fileUpload id="archivoADM" fileUploadListener="#{perfilUsuario.CargaArchivoADM}" cancelLabel="CANCELAR" label="BUSCAR" uploadLabel="ADJUNTAR" mode="advanced" dragDropSupport="false" update="msg" sizeLimit="5000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|PDF|pdf)$/" required="true"/>
+                        <p:fileUpload id="archivoADM" fileUploadListener="#{perfilUsuario.CargaArchivoADM}" cancelLabel="CANCELAR" label="BUSCAR" uploadLabel="ADJUNTAR" mode="advanced" dragDropSupport="false" update="msg" sizeLimit="5000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|PDF|pdf)$/" required="#{perfilUsuario.archivo}"/>
                         <p:message for="archivoADM" showDetail="true"/> 
                         <f:facet name="footer">
                             <h:panelGrid columns="6" cellspacing="6">
