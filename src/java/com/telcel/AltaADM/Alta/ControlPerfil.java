@@ -314,6 +314,7 @@ public class ControlPerfil {
                 listaOpciones.add("SAP_V6");
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 2":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -328,6 +329,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 3":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -342,6 +344,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 4":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -356,6 +359,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 5":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -370,6 +374,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 6":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -384,6 +389,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 7":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -398,6 +404,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 8":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -411,6 +418,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "REGION 9":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -425,6 +433,7 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
+                listaOpciones.add("IMPLANTACION_MASTERCLAW");
                 break;
             case "N/A":
                 listaOpciones.add("N/A");
