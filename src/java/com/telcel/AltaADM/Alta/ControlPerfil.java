@@ -315,6 +315,17 @@ public class ControlPerfil {
                 listaOpciones.add("UNETE_TELCEL");
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 2":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -330,6 +341,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 3":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -345,6 +367,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 4":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -360,6 +393,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 5":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -375,6 +419,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 6":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -390,6 +445,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 7":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -405,6 +471,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 8":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -419,6 +496,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "REGION 9":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -434,6 +522,17 @@ public class ControlPerfil {
                 listaOpciones.add("DASH_MICROONDAS_DIM");
                 listaOpciones.add("PAPERLESS");
                 listaOpciones.add("IMPLANTACION_MASTERCLAW");
+                listaOpciones.add("PONTIS");
+                listaOpciones.add("GTID");
+                listaOpciones.add("PONTIS_GTID");
+                listaOpciones.add("VPN SOPORTE_SIST_R5");
+                listaOpciones.add("ACUNETIX");
+                listaOpciones.add("SOPORTE_SIST_R5");
+                listaOpciones.add("SVA_NOKIA_RIO");
+                listaOpciones.add("SOPORTE_MAVENIR");
+                listaOpciones.add("SOPORTE_SISEA");
+                listaOpciones.add("SOPORTE_TRAP");
+                listaOpciones.add("SVA_HEWLETT-PACKARD");
                 break;
             case "N/A":
                 listaOpciones.add("N/A");
