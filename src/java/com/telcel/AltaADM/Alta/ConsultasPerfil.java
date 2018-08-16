@@ -317,21 +317,21 @@ public class ConsultasPerfil implements Serializable {
              */
             Properties prop = new Properties();
             prop.setProperty("mail.host", "smtp.telcel.com");
-            prop.setProperty("mail.user", "soporte.tid");
+            prop.setProperty("mail.user", "remedycontrol.amx");
             prop.setProperty("mail.transport.protocol", "smtp");
             prop.setProperty("mail.smtp.sendpartial", "true");
 
             Session session = Session.getDefaultInstance(prop, new javax.mail.Authenticator() {
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("soporte.tid", "G3l4t#n4");
+                    return new PasswordAuthentication("remedycontrol.amx", "5b42bc70");
                 }
             });
 
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("soporte.tid@mail.telcel.com"));
+            message.setFrom(new InternetAddress("remedycontrol.amx@mail.telcel.com"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(remitente));
-            message.addRecipient(Message.RecipientType.CC, new InternetAddress("soporte.tid@mail.telcel.com"));
+            message.addRecipient(Message.RecipientType.CC, new InternetAddress("remedycontrol.amx@mail.telcel.com"));
             message.setSubject("ACCESOS-TM");
             message.setContent(multipart);
 

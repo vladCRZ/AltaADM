@@ -326,6 +326,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 2":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -352,6 +364,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 3":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -378,6 +402,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 4":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -404,6 +440,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 5":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -430,6 +478,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 6":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -456,6 +516,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 7":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -482,6 +554,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 8":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -507,6 +591,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "REGION 9":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -533,6 +629,18 @@ public class ControlPerfil {
                 listaOpciones.add("SOPORTE_SISEA");
                 listaOpciones.add("SOPORTE_TRAP");
                 listaOpciones.add("SVA_HEWLETT-PACKARD");
+                listaOpciones.add("IDINGMANTTO");
+                listaOpciones.add("IDINGMBIBA");
+                listaOpciones.add("IDINGAPROVD");
+                listaOpciones.add("IDINGVIRTD");
+                listaOpciones.add("IDINGMD");
+                listaOpciones.add("ASD");
+                listaOpciones.add("ISD");
+                listaOpciones.add("ESD");
+                listaOpciones.add("SOPWINDOWS");
+                listaOpciones.add("ASEING");
+                listaOpciones.add("VFH_AU_BUDA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
             case "N/A":
                 listaOpciones.add("N/A");
@@ -560,6 +668,7 @@ public class ControlPerfil {
                 listaOpciones.add("JEFE_SERVICIO_CLIENTES");
                 listaOpciones.add("JEFE_SERVICIOS_INTER");
                 listaOpciones.add("JEFE_SVA");
+                listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
         }
         return datosOkvR;

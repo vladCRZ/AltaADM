@@ -56,7 +56,7 @@ public class Correos {
             if (!psCorreo.isEmpty() || psCorreo != null || !psCorreo.equals("NA")) {
                 init();
                 MimeMessage voMensaje = new MimeMessage(veEmailSession);
-                voMensaje.setFrom(new InternetAddress("soporte.tid@mail.telcel.com"));
+                voMensaje.setFrom(new InternetAddress("remedycontrol.amx@mail.telcel.com"));
                 voMensaje.addRecipient(Message.RecipientType.TO, new InternetAddress(psCorreo));
                 //voMensaje.addRecipient(Message.RecipientType.TO, new InternetAddress("edson.pichardo@telcel.com"));
                 voMensaje.setSubject(prop.getProperty("MOTIVO_MAIL"));
