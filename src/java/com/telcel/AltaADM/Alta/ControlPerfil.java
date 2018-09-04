@@ -338,6 +338,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 2":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -376,6 +379,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 3":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -414,6 +420,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 4":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -452,6 +461,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 5":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -490,6 +502,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 6":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -528,6 +543,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 7":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -566,6 +584,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 8":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -603,6 +624,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "REGION 9":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -641,6 +665,9 @@ public class ControlPerfil {
                 listaOpciones.add("ASEING");
                 listaOpciones.add("VFH_AU_BUDA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
+                listaOpciones.add("SOPORTE_IAP");
+                listaOpciones.add("VDD_ICEO");
+                listaOpciones.add("VFK-DSX");
                 break;
             case "N/A":
                 listaOpciones.add("N/A");

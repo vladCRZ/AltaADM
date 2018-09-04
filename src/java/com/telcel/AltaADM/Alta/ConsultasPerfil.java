@@ -72,7 +72,7 @@ public class ConsultasPerfil implements Serializable {
             columna += prop.getProperty("DAT_NOMINA2");
             columna += "&cCondiciones=";
             columna += "'536870913'='" + numeroEmpleado + "'";
-
+            System.out.println(columna);
             if (sRemedy.consultaGeneral(columna)) {
                 datosNE = true;
             } else {
@@ -97,6 +97,7 @@ public class ConsultasPerfil implements Serializable {
             columna += "'536870913'='" + numeroEmpleado + "'";
             //String sistema = "cSistema=ADM&cForma=NominaTelcel";
             //String columna = "&cColumnas=536870918&cCondiciones='536870913'='" + numeroEmpleado + "'";// '536870913'='"+numEmpleado+"'";
+            System.out.println(columna);
             if (sRemedy.consultaGeneral(columna) && !sRemedy.getResultadoConsulta().contains("000000")) {
                 correoEmpleado = sRemedy.getResultadoConsulta();
                 datosOk = true;
@@ -130,6 +131,7 @@ public class ConsultasPerfil implements Serializable {
             columna += "&cCondiciones='7'='2' ";
             columna += "'1000000054'='" + numeroEmpleado + "'";
             datosOk = sRemedy.consultaGeneral(columna);
+            System.out.println(columna);
         } catch (Exception exc) {
             LOG.error(exc);
         }
@@ -154,6 +156,7 @@ public class ConsultasPerfil implements Serializable {
             columna += "'536870913'='" + sistemaEmpleado + "' ";
             columna += "'536870964'='" + numeroEmpleado + "'";
             datosOkADM = sRemedy.consultaGeneral(columna);
+            System.out.println(columna);
         } catch (Exception exc) {
             LOG.error(exc);
         }
@@ -181,6 +184,7 @@ public class ConsultasPerfil implements Serializable {
             columna2 += "'536870913'='" + sistemaEmpleado + "' ";
             columna2 += "'536870964'='" + numeroEmpleado + "'";
             sRemedy.consultaGeneral(columna2);
+            System.out.println(columna2);
             LOG.debug(sRemedy.getResultadoConsulta());
             if (!sRemedy.getResultadoConsulta().isEmpty()) {
                 FechaF = format_F.parse(sRemedy.getResultadoConsulta());
@@ -227,6 +231,7 @@ public class ConsultasPerfil implements Serializable {
             //String sistema = "cSistema=ADM&cForma=NominaTelcel";
             //String columna1 = "&cColumnas=536870913%20536870914%20536870915%20536870916%20536870917%20536870919%20536870920%20536870922%20536870923%20536870925&cCondiciones=%27536870913%27=%27" + numeroEmpleado + "%27";// '536870913'='"+numEmpleado+"'";
             sRemedy.consultaGeneralList(columna);
+            System.out.println(columna);
             String solNEmpleado = sRemedy.getListaResultado().get(0);
             String solUUniversal = sRemedy.getListaResultado().get(1).toLowerCase();
             String solnombre = sRemedy.getListaResultado().get(4);
@@ -246,6 +251,7 @@ public class ConsultasPerfil implements Serializable {
 
             //String columna11 = "&cColumnas=536870913 536870915 536870916 536870917 536870918&cCondiciones='536870913'='" + usuarioUniversal + "'";//nombre--536870925
             sRemedy.consultaGeneralList(columna2);
+            System.out.println(columna2);
             String usuarioNum = sRemedy.getListaResultado().get(0);
             String usuarioSol = sRemedy.getListaResultado().get(3) + " " + sRemedy.getListaResultado().get(1) + " " + sRemedy.getListaResultado().get(2);
             String correoSol = sRemedy.getListaResultado().get(4);
@@ -273,7 +279,7 @@ public class ConsultasPerfil implements Serializable {
             columna3 += "'536871023'='" + usuarioNum + "' ";
             columna3 += "'536870931'='" + solTipo + "' ";            
             columna3 += "'536870938'='<FILE>" + archivADM + "</FILE>'";
-
+            System.out.println("--------------------------------------" + columna3);
             if (sRemedy.InsertaRegistro(columna3).startsWith("ADM")) {
                 enviaCorreo(correoSol, sistemaEmpleado, sRemedy.folioIN, solnombre, solPaterno, solMaterno);
                 datosOk = true;
