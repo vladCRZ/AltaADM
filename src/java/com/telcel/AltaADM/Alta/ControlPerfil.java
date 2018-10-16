@@ -343,6 +343,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 2":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -386,6 +387,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 3":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -429,6 +431,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 4":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -472,6 +475,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 5":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -515,6 +519,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 6":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -558,6 +563,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 7":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -601,6 +607,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 8":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -643,6 +650,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "REGION 9":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -686,6 +694,7 @@ public class ControlPerfil {
                 listaOpciones.add("VY4_GPOA");
                 listaOpciones.add("VFD_NBO");
                 listaOpciones.add("VFK_ARQDATOS");
+                listaOpciones.add("VP3_NEKOTEC");
                 break;
             case "N/A":
                 listaOpciones.add("N/A");
