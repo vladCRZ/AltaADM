@@ -8,6 +8,7 @@ package com.telcel.AltaADM.Alta;
 import com.infomedia.utils.PropertyLoader;
 import com.telcel.AltaADM.Login.Mensajes;
 import com.telcel.AltaADM.Utilerias.SesionUsuario;
+import com.telcel.AltaADM.Utilerias.servicesRemedy;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -55,6 +56,7 @@ public class ControlPerfil {
     Properties prop;
 
     public DefaultStreamedContent imagen;
+    servicesRemedy sRemedy = new servicesRemedy();
 
     public ControlPerfil() {
 
@@ -217,27 +219,67 @@ public class ControlPerfil {
      * @return ruta final del archivo
      */
     public String CargaArchivoADM(FileUploadEvent event) {
-        
-        UploadedFile archivoADM = event.getFile();
-        rutaArchivo = prop.getProperty("PATH_ARCHIVOS") + "ARCHIVO-ADM-PAGINA_" + archivoADM.getFileName();
-        try {
-            try (FileOutputStream fileOut = new FileOutputStream(rutaArchivo)) {
-                fileOut.write(archivoADM.getContents());
-                fileOut.flush();
-            }
-            LOG.info("Carga del archivo con exito");
-            LOG.info(rutaArchivo);
-            nombreArchivo = "ARCHIVO-ADM-PAGINA_" + archivoADM.getFileName();
-            imagen = new DefaultStreamedContent(event.getFile().getInputstream());
-            msg.mensajeInformacion("Se cargo el archivo: " + archivoADM.getFileName());
-        } catch (IOException EFIO) {
-            LOG.error(EFIO);
-            msg.mensajeError("Ocurrio un problema al cargar el archivo");
-            rutaArchivo = "";
-        }
+        switch (perfil.getSistemaEmpleado()) {
+            case "REMEDY":
+                nombreArchivo = "";
+                rutaArchivo="";
+                break;
+            case "ACCESO REMOTO VPN":
+                UploadedFile archivoADM = event.getFile();
+                rutaArchivo = prop.getProperty("PATH_ARCHIVOS") + "ARCHIVO-ADM-PAGINA_" + archivoADM.getFileName();
+                try {
+                    try (FileOutputStream fileOut = new FileOutputStream(rutaArchivo)) {
+                        fileOut.write(archivoADM.getContents());
+                        fileOut.flush();
+                    }
+                    LOG.info("Carga del archivo con exito");
+                    LOG.info(rutaArchivo);
+                    nombreArchivo = "ARCHIVO-ADM-PAGINA_" + archivoADM.getFileName();
+                    imagen = new DefaultStreamedContent(event.getFile().getInputstream());
+                    msg.mensajeInformacion("Se cargo el archivo: " + archivoADM.getFileName());
+                } catch (IOException EFIO) {
+                    LOG.error(EFIO);
+                    msg.mensajeError("Ocurrio un problema al cargar el archivo");
+                    nombreArchivo = "";
+                    rutaArchivo = "";
+                }
+                break;
+            default:
+                nombreArchivo = "";
+                rutaArchivo = "";
+                break;
+        }        
         return rutaArchivo;
     }
 
+    /**
+     * Funcion para validar perfiles de Acceso Remoto VPN
+     *
+     * @author GVelasco
+     * @since 27/03/2019
+     */
+    
+    
+    public List<String> fncConsultarCampanias() {
+        List<String> voCompañias = new ArrayList();
+        
+        try {
+            String columna = "";
+
+            columna += prop.getProperty("CLIENTE_ARS");
+            columna += prop.getProperty("FORM_ADMSPR");
+            columna += prop.getProperty("DAT_SPR");
+            columna += prop.getProperty("COND_SPR");
+            System.out.println(columna);
+            voCompañias = sRemedy.consultaGeneralList(columna);
+        } catch (Exception exc) {
+            LOG.error(exc);
+        }
+
+        return voCompañias;
+    }
+    
+    
     /**
      * Funcion para validar si el usuario tiene acceso al REMEDY
      *
@@ -245,6 +287,9 @@ public class ControlPerfil {
      * @since 26/02/2015
      * @return datosOkSis
      */
+    
+    
+    
     public boolean validaSistema() {
         LOG.debug(perfil.getSistemaEmpleado());
         listaRegiones = new ArrayList<>();
@@ -253,10 +298,12 @@ public class ControlPerfil {
             case "REMEDY":
                 if (!perfilConsultas.consultaUsuario(perfil.getNumeroEmpleado()) && !perfilConsultas.valdiaADM(perfil.getNumeroEmpleado(), "REMEDY")) {// && perfilConsultas.validaADM2(perfil.getNumeroEmpleado(), "REMEDY")) {
                     listaRegiones.add("CORP");
+                    perfil.setRegionEmpleado("CORP");
                     perfil.setNodoEmpleado("PRODUCCION");
+                    validaRegionPerfil();
                     datosOkSis = true;
                 } else if (perfilConsultas.valdiaADM(perfil.getNumeroEmpleado(), "REMEDY")) {
-                    msg.mensajeError("El usuario tiene un ADM en ejecución");
+                    msg.mensajeError("El usuario tiene un ADM de tipo REMEDY en ejecución");
                     LimpiaVariables();
                 } else {
                     msg.mensajeError("El usuario esta en REMEDY esta solicitud no aplica");
@@ -279,7 +326,7 @@ public class ControlPerfil {
                     perfil.setNodoEmpleado("N/A");
                     datosOkSis = true;
                 } else if (perfilConsultas.valdiaADM(perfil.getNumeroEmpleado(), "ACCESO REMOTO VPN")) {
-                    msg.mensajeError("El usuario tiene un ADM en ejecucion");
+                    msg.mensajeError("El usuario tiene un ADM de tipo ACCESO REMOTO VPN en ejecucion");
                     LimpiaVariables();
                 }
                 archivo = true;
@@ -298,10 +345,18 @@ public class ControlPerfil {
      * el sistema valida la región y hace la actualización en la lista de perfiles del formulario AltaADM
      * @return
      */
-    public boolean validaRegionPerfil() {
-        boolean datosOkvR = false;
+    public void validaRegionPerfil() {
+        //boolean datosOkvR = false;
         listaOpciones = new ArrayList<>();
-        switch (perfil.getRegionEmpleado()) {
+        listaOpciones = fncConsultarCampanias();
+        
+        for (int i = 1; i < listaOpciones.size() ; i++ ){
+            System.out.println("lllll");
+           // System.out.println(listaOpciones.get(i));
+        }
+        
+        
+/*      switch (perfil.getRegionEmpleado()) {
             case "REGION 1":
                 listaOpciones.add("DISTRIBUIDORES");
                 listaOpciones.add("SOPORTE ALCATEL MKT");
@@ -346,6 +401,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 2":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -392,6 +448,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 3":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -438,6 +495,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 4":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -484,6 +542,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 5":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -530,6 +589,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 6":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -576,6 +636,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 7":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -622,6 +683,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 8":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -667,6 +729,7 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "REGION 9":
                 listaOpciones.add("DISTRIBUIDORES");
@@ -713,18 +776,19 @@ public class ControlPerfil {
                 listaOpciones.add("VP3_NEKOTEC");
                 listaOpciones.add("VFK_NAGARRO");
                 listaOpciones.add("VF9_SAP.TI");
+                listaOpciones.add("VY1_USERPC");
                 break;
             case "N/A":
                 listaOpciones.add("N/A");
                 break;
-            case "CORP":
+            case "CORP":*/
                 /*
                 listaOpciones.add("JEFE_ING");
                 listaOpciones.add("JEFE_INFORMATICA");
                 listaOpciones.add("JEFE_IMP_PROY");
                 listaOpciones.add("JEFE_FINANZAS");
                  */
-                listaOpciones.add("JEFE_COMERCIAL");
+                /*listaOpciones.add("JEFE_COMERCIAL");
                 listaOpciones.add("JEFE_DEUR");
                 listaOpciones.add("JEFE_DISTRIBUIDORES");
                 listaOpciones.add("JEFE_FINANZAS");
@@ -742,8 +806,8 @@ public class ControlPerfil {
                 listaOpciones.add("JEFE_SVA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
                 break;
-        }
-        return datosOkvR;
+        }*/
+       // return datosOkvR;
     }
 
     /**
@@ -759,7 +823,7 @@ public class ControlPerfil {
     public void generaRegistro(ActionEvent event) {
         String usuarioUniversal = "";
         LOG.info("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
-        if (!perfil.getNumeroEmpleado().isEmpty() && !perfil.getCorreoEmpleado().isEmpty() && !perfil.getPerfilEmpleado().isEmpty() && !perfil.getJustificacionEmpleado().isEmpty() && !nombreArchivo.equals("") && !perfil.getRegionEmpleado().isEmpty()) {
+        if (!perfil.getNumeroEmpleado().isEmpty() && !perfil.getCorreoEmpleado().isEmpty() && !perfil.getPerfilEmpleado().isEmpty() && !perfil.getJustificacionEmpleado().isEmpty() && !perfil.getRegionEmpleado().isEmpty()) {
             switch (perfil.getSistemaEmpleado()) {
                 case "REMEDY":
                     usuarioUniversal = sesion.inciaSesion();
@@ -769,7 +833,12 @@ public class ControlPerfil {
                 case "ACCESO REMOTO VPN":
                     usuarioUniversal = sesion.inciaSesion();
                     LOG.info(usuarioUniversal);
-                    perfilConsultas.generaADM(perfil.getNumeroEmpleado(), perfil.getSistemaEmpleado(), perfil.getPerfilEmpleado(), perfil.getJustificacionEmpleado(), perfil.getNodoEmpleado(), perfil.getCorreoEmpleado(), perfil.getRegionEmpleado(), nombreArchivo, usuarioUniversal);
+                    if (!nombreArchivo.equals("")){
+                        perfilConsultas.generaADM(perfil.getNumeroEmpleado(), perfil.getSistemaEmpleado(), perfil.getPerfilEmpleado(), perfil.getJustificacionEmpleado(), perfil.getNodoEmpleado(), perfil.getCorreoEmpleado(), perfil.getRegionEmpleado(), nombreArchivo, usuarioUniversal);
+                    }
+                    else{
+                        msg.mensajeError("Debe de adjuntar el archivo correspondiente para el ADM");
+                    }
                     break;
             }
         } else if (perfil.getNumeroEmpleado().isEmpty()) {
@@ -780,9 +849,7 @@ public class ControlPerfil {
             msg.mensajeError("El perfil de empleado es obligatorio");
         } else if (perfil.getJustificacionEmpleado().isEmpty()) {
             msg.mensajeError("Debe de proporcionar una justificacion");
-        } else if (nombreArchivo.equals("")) {
-            msg.mensajeError("Debe de adjuntar el archivo correspondiente para el ADM");
-        }
+        } 
         LOG.info("-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
         LimpiaVariables();
     }
