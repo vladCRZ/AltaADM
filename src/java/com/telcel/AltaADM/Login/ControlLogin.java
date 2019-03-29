@@ -88,6 +88,7 @@ public class ControlLogin {
                 msg.mensajeError("USUARIO NO REGISTRADO EN EL SISTEMA");
             }
         } catch (Exception e) {
+            
             LOG.error(e);
         }
 

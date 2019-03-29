@@ -9,21 +9,17 @@ import com.infomedia.utils.PropertyLoader;
 import com.telcel.AltaADM.Login.Mensajes;
 import com.telcel.AltaADM.Utilerias.SesionUsuario;
 import com.telcel.AltaADM.Utilerias.servicesRemedy;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Properties;
-
 import javax.faces.event.ActionEvent;
-
 import org.apache.log4j.Logger;
-
-import org.primefaces.model.UploadedFile;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -260,8 +256,8 @@ public class ControlPerfil {
      */
     
     
-    public List<String> fncConsultarCampanias() {
-        List<String> voCompañias = new ArrayList();
+    public List<String> fncConsultarPerfiles() {
+        List<String> voPerfiles = new ArrayList();
         
         try {
             String columna = "";
@@ -271,12 +267,12 @@ public class ControlPerfil {
             columna += prop.getProperty("DAT_SPR");
             columna += prop.getProperty("COND_SPR");
             System.out.println(columna);
-            voCompañias = sRemedy.consultaGeneralList(columna);
+            voPerfiles = sRemedy.consultaGeneralList(columna);// Se recibe la consulta en forma de lista de cadena de texto
         } catch (Exception exc) {
             LOG.error(exc);
         }
 
-        return voCompañias;
+        return voPerfiles;
     }
     
     
@@ -345,450 +341,24 @@ public class ControlPerfil {
      * el sistema valida la región y hace la actualización en la lista de perfiles del formulario AltaADM
      * @return
      */
-    public void validaRegionPerfil() {
-        //boolean datosOkvR = false;
+    public boolean validaRegionPerfil() {
+        boolean datosOkvR = false;
         listaOpciones = new ArrayList<>();
-        listaOpciones = fncConsultarCampanias();
+        //listaOpciones = fncConsultarCampanias();
         
-        for (int i = 1; i < listaOpciones.size() ; i++ ){
-            System.out.println("lllll");
-           // System.out.println(listaOpciones.get(i));
+        String regiones = perfil.getRegionEmpleado();
+        
+        if (regiones.contentEquals("N/A")){ //Si el campo Región es igual a N/A
+            listaOpciones.add("N/A");
         }
-        
-        
-/*      switch (perfil.getRegionEmpleado()) {
-            case "REGION 1":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 2":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 3":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 4":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 5":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 6":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 7":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 8":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "REGION 9":
-                listaOpciones.add("DISTRIBUIDORES");
-                listaOpciones.add("SOPORTE ALCATEL MKT");
-                listaOpciones.add("SOPORTE CAJEROS RECEPTORES");
-                listaOpciones.add("SOPORTE INTELLINX");
-                listaOpciones.add("SOPORTE ROAMING");
-                listaOpciones.add("SOPORTE_MENTORLMS ");
-                listaOpciones.add("RADIOFREC_PARAMETROS");
-                listaOpciones.add("SOPORTE_SISTEMAS_R9");
-                listaOpciones.add("SAP_V6");
-                listaOpciones.add("UNETE_TELCEL");
-                listaOpciones.add("DASH_MICROONDAS_DIM");
-                listaOpciones.add("PAPERLESS");
-                listaOpciones.add("IMPLANTACION_MASTERCLAW");
-                listaOpciones.add("PONTIS");
-                listaOpciones.add("GTID");
-                listaOpciones.add("PONTIS_GTID");
-                listaOpciones.add("VPN SOPORTE_SIST_R5");
-                listaOpciones.add("ACUNETIX");
-                listaOpciones.add("SOPORTE_SIST_R5");
-                listaOpciones.add("SVA_NOKIA_RIO");
-                listaOpciones.add("SOPORTE_MAVENIR");
-                listaOpciones.add("SOPORTE_SISEA");
-                listaOpciones.add("SOPORTE_TRAP");
-                listaOpciones.add("SVA_HEWLETT-PACKARD");
-                listaOpciones.add("IDINGMANTTO");
-                listaOpciones.add("IDINGMBIBA");
-                listaOpciones.add("IDINGAPROVD");
-                listaOpciones.add("IDINGVIRTD");
-                listaOpciones.add("IDINGMD");
-                listaOpciones.add("ASD");
-                listaOpciones.add("ISD");
-                listaOpciones.add("ESD");
-                listaOpciones.add("SOPWINDOWS");
-                listaOpciones.add("ASEING");
-                listaOpciones.add("VFH_AU_BUDA");
-                listaOpciones.add("JEFE_FINANZAS_OID");
-                listaOpciones.add("SOPORTE_IAP");
-                listaOpciones.add("VDD_ICEO");
-                listaOpciones.add("VY4_GPOA");
-                listaOpciones.add("VFD_NBO");
-                listaOpciones.add("VFK_ARQDATOS");
-                listaOpciones.add("VP3_NEKOTEC");
-                listaOpciones.add("VFK_NAGARRO");
-                listaOpciones.add("VF9_SAP.TI");
-                listaOpciones.add("VY1_USERPC");
-                break;
-            case "N/A":
-                listaOpciones.add("N/A");
-                break;
-            case "CORP":*/
-                /*
-                listaOpciones.add("JEFE_ING");
-                listaOpciones.add("JEFE_INFORMATICA");
-                listaOpciones.add("JEFE_IMP_PROY");
-                listaOpciones.add("JEFE_FINANZAS");
-                 */
-                /*listaOpciones.add("JEFE_COMERCIAL");
+        else if(regiones.contains("REGION")){//Si el campo Región contiene la palabra REGION
+            
+            listaOpciones=fncConsultarPerfiles();
+            Collections.sort(listaOpciones);
+            
+        }
+        else if (regiones.contentEquals("CORP")){//Si el campo Región es igual a CORP
+            listaOpciones.add("JEFE_COMERCIAL");
                 listaOpciones.add("JEFE_DEUR");
                 listaOpciones.add("JEFE_DISTRIBUIDORES");
                 listaOpciones.add("JEFE_FINANZAS");
@@ -805,9 +375,13 @@ public class ControlPerfil {
                 listaOpciones.add("JEFE_SERVICIOS_INTER");
                 listaOpciones.add("JEFE_SVA");
                 listaOpciones.add("JEFE_FINANZAS_OID");
-                break;
-        }*/
-       // return datosOkvR;
+        }else{                                      //En caso que no se haya seleccionado una Región
+            listaOpciones.add("");
+            
+        }
+        
+        
+        return datosOkvR;
     }
 
     /**

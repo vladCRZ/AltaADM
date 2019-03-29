@@ -281,7 +281,7 @@ public class ConsultasPerfil implements Serializable {
             columna3 += "'536870938'='<FILE>" + archivADM + "</FILE>'";
             System.out.println("--------------------------------------" + columna3);
             if (sRemedy.InsertaRegistro(columna3).startsWith("ADM")) {
-                enviaCorreo(correoSol, sistemaEmpleado, sRemedy.folioIN, solnombre, solPaterno, solMaterno);
+                //enviaCorreo(correoSol, sistemaEmpleado, sRemedy.folioIN, solnombre, solPaterno, solMaterno);
                 datosOk = true;
             }
 

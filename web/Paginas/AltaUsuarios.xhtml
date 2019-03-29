@@ -35,9 +35,9 @@
                         <p:inputText id="correoEmpleado" value="#{perfilUsuario.perfil.correoEmpleado}" disabled="#{perfilUsuario.datosOk}" style="height: 15px; width: 110px;"/>
 
                         <h:outputLabel value="*Sistema:" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
-                        <p:selectOneMenu id="opcionEmpleado" value="#{perfilUsuario.perfil.sistemaEmpleado}" style="height: 25px; width: 150px;">
-                            <f:selectItem itemLabel="OPCIONES" itemValue="noAplica"/>
-                            <f:selectItem itemLabel="REMEDY" itemValue="REMEDY"/>
+                        <p:selectOneMenu  id="opcionEmpleado" value="#{perfilUsuario.perfil.sistemaEmpleado}" style="height: 25px; width: 150px;" widgetVar="opciones" onchange="cambiar()" >
+                            <f:selectItem itemLabel="OPCIONES" itemValue="noAplica" />
+                            <f:selectItem itemLabel="REMEDY" itemValue="REMEDY" />
                             <f:selectItem itemLabel="ACCESO REMOTO VPN" itemValue="ACCESO REMOTO VPN"/>
                             <p:ajax listener="#{perfilUsuario.validaSistema}" update="numeroEmpleado, opcionEmpleado, regionEmpleado,perfilEmpleado,correoEmpleado" />
                         </p:selectOneMenu>
@@ -58,9 +58,9 @@
                         <h:outputLabel value="*Justificación" style="font-weight: bold; height:30px; width:100px;text-align: center;font-weight: bold; font-size:15px"/>
                         <p:inputTextarea id="jutificacionEmpleado" cols="30" rows="5" value="#{perfilUsuario.perfil.justificacionEmpleado}" maxlength="155"/>
 
-                        <h:outputLabel for="archivoADM" value="*Archivo adjunto(.pdf)" style="font-weight: bold;"/>
-                        <p:fileUpload id="archivoADM" fileUploadListener="#{perfilUsuario.CargaArchivoADM}" cancelLabel="CANCELAR" label="BUSCAR" uploadLabel="ADJUNTAR" mode="advanced" dragDropSupport="false" update="msg" sizeLimit="5000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|PDF|pdf)$/" required="true"/>
-                        <p:message for="archivoADM" showDetail="true"/> 
+                        <h:outputLabel id="archivoLabel" for="archivoADM" value="*Archivo adjunto(.pdf)" style="font-weight: bold;"/>
+                        <p:fileUpload id="archivoADM" fileUploadListener="#{perfilUsuario.CargaArchivoADM}" cancelLabel="CANCELAR" label="BUSCAR" uploadLabel="ADJUNTAR" mode="advanced" dragDropSupport="false" update="msg" sizeLimit="5000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|PDF|pdf)$/" required="false" style="display: block;"/>
+                        <p:message id="msgArchivo" for="archivoADM" showDetail="true" style="display: block;"/>
 
                         <f:facet name="footer">
                             <h:panelGrid columns="6" cellspacing="6">
@@ -108,6 +108,22 @@
                 function handleLoginRequest(xhr, status, args) {
                     if (args.loggedOut) {
                         location.href = args.rutaPagina;
+                    }
+                }
+                function cambiar(){
+                    var index = document.getElementById('frmAltaUsuario:opcionEmpleado_input').selectedIndex;
+                    if (index === 1){
+                        document.getElementById("frmAltaUsuario:archivoLabel").style.display = 'none';
+                        document.getElementById("frmAltaUsuario:archivoADM").style.display = 'none';
+                        document.getElementById("frmAltaUsuario:msgArchivo").style.display = 'none';
+                    }else if (index === 2){
+                        document.getElementById("frmAltaUsuario:archivoLabel").style.display = 'block';
+                        document.getElementById("frmAltaUsuario:archivoADM").style.display = 'block';
+                        document.getElementById("frmAltaUsuario:msgArchivo").style.display = 'block';
+                    }else{
+                        document.getElementById("frmAltaUsuario:archivoLabel").style.display = 'block';
+                        document.getElementById("frmAltaUsuario:archivoADM").style.display = 'block';
+                        document.getElementById("frmAltaUsuario:msgArchivo").style.display = 'block';
                     }
                 }
             </script>
