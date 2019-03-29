@@ -340,6 +340,7 @@ public class ControlPerfil {
      * función para agregar nuevos perfiles, dependiendo de la combinación del sistema y de la región,
      * el sistema valida la región y hace la actualización en la lista de perfiles del formulario AltaADM
      * @return
+     * Modificado Marzo 2019 GVelasco
      */
     public boolean validaRegionPerfil() {
         boolean datosOkvR = false;
